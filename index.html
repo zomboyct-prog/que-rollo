@@ -1,1 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qué Rollo - Roles de Canela & Más</title>
+    
+    <!-- Fuentes de Google: Fredoka para títulos (juguetona y redondeada) y Nunito para textos (legible y amigable) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cream: '#F4E7D6',
+                            orange: '#EB6B2F',
+                            hotpink: '#E25A9C',
+                            lightpink: '#F7C7E8',
+                            lavender: '#D4B5F6',
+                            dark: '#5A181D', // Color oscuro para textos (tipo granate/chocolate)
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Estilos personalizados adicionales */
+        body {
+            background-color: #F4E7D6;
+            overflow-x: hidden;
+        }
+        
+        .wavy-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
 
+        .wavy-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .wavy-divider .shape-fill {
+            fill: #F4E7D6;
+        }
+        
+        /* Sombras suaves y de colores para las tarjetas */
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(226, 90, 156, 0.2), 0 8px 10px -6px rgba(226, 90, 156, 0.1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(235, 107, 47, 0.3), 0 8px 10px -6px rgba(235, 107, 47, 0.2);
+        }
+
+        /* Texto con contorno (Stroke) para el título principal */
+        .text-stroke {
+            -webkit-text-stroke: 2px #5A181D;
+            color: #F4E7D6;
+            text-shadow: 4px 4px 0px #5A181D;
+        }
+    </style>
+</head>
+<body class="font-body text-brand-dark antialiased relative selection:bg-brand-hotpink selection:text-white">
+
+    <!-- ================= NAVEGACIÓN ================= -->
+    <nav class="fixed top-0 w-full z-50 bg-brand-cream border-b-4 border-brand-dark px-6 py-4 flex justify-between items-center shadow-[0_6px_0px_#5A181D]">
+        <div class="font-display font-bold text-3xl text-brand-orange drop-shadow-[2px_2px_0_#5A181D] tracking-wide cursor-pointer hover:scale-105 transition-transform">
+            <a href="#">qué rollo</a>
+        </div>
+        
+        <!-- Menú Desktop -->
+        <div class="hidden md:flex gap-8 font-display font-bold text-xl text-brand-dark">
+            <a href="#" class="hover:text-brand-hotpink hover:-translate-y-1 transition-all">Inicio</a>
+            <a href="#historia" class="hover:text-brand-orange hover:-translate-y-1 transition-all">Historia</a>
+            <a href="#menu" class="hover:text-brand-lavender hover:-translate-y-1 transition-all">Menú</a>
+            <a href="#blog" class="hover:text-brand-hotpink hover:-translate-y-1 transition-all">Blog</a>
+        </div>
+
+        <!-- Botón Móvil (Visual) -->
+        <div class="md:hidden font-display font-bold text-2xl bg-brand-lightpink border-2 border-brand-dark px-3 py-1 rounded-lg shadow-[3px_3px_0px_#5A181D]">
+            ☰
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-lightpink pb-20 pt-20 border-b-4 border-brand-dark">
+        
+        <!-- Background Blobs Decorativos -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-72 h-72 bg-brand-orange rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+            <div class="absolute top-[20%] right-[-5%] w-96 h-96 bg-brand-lavender rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-[-20%] left-[20%] w-80 h-80 bg-brand-hotpink rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-12">
+            
+            <!-- Mascota Albi (Emoji representation) -->
+            <div class="animate-float mb-6 relative">
+                <div class="w-40 h-40 bg-brand-cream border-4 border-brand-dark rounded-full flex items-center justify-center text-7xl shadow-[8px_8px_0px_#5A181D] relative z-10 overflow-hidden transform -rotate-3">
+                    🐶🕶️
+                </div>
+                <!-- Detalle de destello -->
+                <div class="absolute -top-4 -right-4 text-5xl text-brand-orange animate-pulse drop-shadow-[2px_2px_0_#5A181D]">✨</div>
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="font-display text-7xl md:text-8xl lg:text-9xl font-bold tracking-wider mb-2 text-brand-dark relative inline-block">
+                <span class="block text-brand-hotpink transform -rotate-3 text-shadow z-20 relative">¡qué</span>
+                <span class="block text-brand-orange transform rotate-2 -mt-4 text-shadow z-10 relative">rollo!</span>
+            </h1>
+            
+            <p class="font-display text-2xl md:text-3xl text-brand-dark mt-6 bg-brand-cream inline-block px-8 py-3 rounded-full border-4 border-brand-dark shadow-[6px_6px_0px_#5A181D] transform -rotate-2">
+                Roles de Canela & Más 🍥
+            </p>
+
+            <!-- Call to Action -->
+            <div class="mt-12">
+                <a href="#menu" class="inline-block bg-brand-hotpink hover:bg-brand-orange text-white font-display text-2xl md:text-3xl font-bold py-5 px-12 rounded-full shadow-[8px_8px_0px_#5A181D] hover:shadow-[2px_2px_0px_#5A181D] hover:translate-y-2 hover:translate-x-2 transition-all duration-200 border-4 border-brand-dark">
+                    Pide el tuyo 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Divisor ondulado inferior -->
+        <div class="wavy-divider bottom-[-4px]">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill" fill="#EB6B2F"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ================= SOBRE NOSOTROS ================= -->
+    <section id="historia" class="py-24 bg-brand-orange relative z-10 border-b-4 border-brand-dark overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 max-w-6xl">
+            <div class="md:w-3/5">
+                <div class="bg-brand-cream p-10 rounded-[2rem] border-4 border-brand-dark shadow-[10px_10px_0px_#5A181D] transform -rotate-1">
+                    <h2 class="font-display text-5xl md:text-6xl text-brand-hotpink font-bold mb-6 drop-shadow-[2px_2px_0_#5A181D]">Hecho con Amor ❤️</h2>
+                    <p class="font-body text-xl text-brand-dark mb-6 font-semibold leading-relaxed">
+                        Nacimos en <span class="text-brand-orange font-bold text-2xl bg-brand-lightpink px-2 py-1 rounded border-2 border-brand-dark inline-block transform rotate-2">Villahermosa, Tabasco</span>, con la misión de hornear sonrisas todos los días. Nuestros roles son 100% artesanales y se preparan diariamente desde cero para garantizar que lleguen suavecitos y calientitos a tus manos.
+                    </p>
+                    <p class="font-body text-xl text-brand-dark font-semibold leading-relaxed">
+                        Y por supuesto, la magia no sería posible sin <strong>Albi</strong> 🐶😎, nuestro perrito buena onda con gorra y lentes que es el fan #1 (y jefe catador oficial) de los roles de canela.
+                    </p>
+                </div>
+            </div>
+            <div class="md:w-2/5 flex justify-center relative mt-10 md:mt-0">
+                <!-- Blob decorativo detrás de Albi -->
+                <div class="absolute w-72 h-72 bg-brand-lavender rounded-full mix-blend-multiply opacity-80 filter blur-xl animate-blob"></div>
+                <div class="w-64 h-64 md:w-80 md:h-80 bg-brand-hotpink rounded-[3rem] border-4 border-brand-dark shadow-[12px_12px_0px_#5A181D] flex items-center justify-center text-9xl transform rotate-3 relative z-10">
+                    🐕🧢
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MENU SECTION ================= -->
+    <section id="menu" class="py-24 bg-brand-cream relative z-10 border-b-4 border-brand-dark">
+        <div class="container mx-auto px-6">
+            
+            <!-- Encabezado del Menú -->
+            <div class="text-center mb-20 relative">
+                <h2 class="font-display text-6xl md:text-7xl text-brand-dark font-bold relative z-10 mb-8 inline-block px-10 py-4 bg-brand-lavender border-4 border-brand-dark rounded-full shadow-[8px_8px_0px_#5A181D] transform rotate-1">
+                    Nuestro Menú 😋
+                </h2>
+                <div class="mt-4">
+                    <div class="inline-flex flex-col items-center justify-center bg-brand-dark text-brand-cream font-display text-4xl font-bold py-4 px-10 rounded-2xl shadow-[6px_6px_0px_#EB6B2F] transform -rotate-2 border-4 border-brand-cream">
+                        <span>$55.00</span>
+                        <span class="text-base font-body tracking-widest text-brand-lightpink mt-1">POR PIEZA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Productos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                
+                <!-- Item: Clásico -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-orange rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform -rotate-6">🧀</div>
+                    <h3 class="font-display text-3xl text-brand-orange mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Rol Clásico</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Nuestro rol tradicional, esponjoso y aromático, con <span class="bg-brand-orange/20 px-1 rounded font-bold border-b-2 border-brand-orange">frosting de queso crema</span>.
+                    </p>
+                </div>
+
+                <!-- Item: Nutella -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-hotpink rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform rotate-6">🍫</div>
+                    <h3 class="font-display text-3xl text-brand-hotpink mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Rol Nutella</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Relleno de canela con topping delicioso y abundante de <span class="bg-brand-hotpink/20 px-1 rounded font-bold border-b-2 border-brand-hotpink">Nutella</span>.
+                    </p>
+                </div>
+
+                <!-- Item: Ferrero -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-lavender rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform -rotate-3">🌰</div>
+                    <h3 class="font-display text-3xl text-brand-lavender mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Rol Ferrero</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Cubierto con deliciosa crema de <span class="bg-brand-lavender/40 px-1 rounded font-bold border-b-2 border-brand-lavender">Ferrero</span> crujiente.
+                    </p>
+                </div>
+
+                <!-- Item: Oreo -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-gray-400 rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform rotate-3">🍪</div>
+                    <h3 class="font-display text-3xl text-gray-700 mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Rol Oreo</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Con frosting de queso crema y trozos crujientes de galleta <span class="bg-gray-200 px-1 rounded font-bold border-b-2 border-gray-500">Oreo</span>.
+                    </p>
+                </div>
+
+                <!-- Item: Dulce de Leche -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#C88448] rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform -rotate-12">🍯</div>
+                    <h3 class="font-display text-3xl text-[#C88448] mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Dulce de Leche</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Con frosting de queso crema y suculento <span class="bg-[#C88448]/20 px-1 rounded font-bold border-b-2 border-[#C88448]">dulce de leche</span>.
+                    </p>
+                </div>
+
+                <!-- Item: Queso Crema -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#6CA4C8] rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform rotate-12">🥛</div>
+                    <h3 class="font-display text-3xl text-[#6CA4C8] mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Queso Crema</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        <span class="bg-[#6CA4C8]/20 px-1 rounded font-bold border-b-2 border-[#6CA4C8]">Doble frosting</span> de queso crema, extra cremoso y muy suave.
+                    </p>
+                </div>
+
+                <!-- Item: Frutos Rojos -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_4px_0px_#5A181D] transition-all duration-300 relative overflow-hidden group md:col-span-2 lg:col-span-1 lg:col-start-2">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#D93847] rounded-full opacity-30 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-6xl mb-6 bg-brand-cream inline-block p-4 rounded-full border-2 border-brand-dark transform -rotate-3">🍓</div>
+                    <h3 class="font-display text-3xl text-[#D93847] mb-3 font-bold drop-shadow-[1px_1px_0_#5A181D]">Frutos Rojos</h3>
+                    <p class="font-body text-brand-dark font-semibold text-lg leading-relaxed">
+                        Con frosting de queso crema y <span class="bg-[#D93847]/20 px-1 rounded font-bold border-b-2 border-[#D93847]">compota artesanal</span> de frutos rojos.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BLOG SECTION ================= -->
+    <section id="blog" class="py-24 bg-brand-lavender relative z-10 border-b-4 border-brand-dark">
+         <div class="container mx-auto px-6">
+             
+             <!-- Título Blog -->
+             <div class="text-center mb-16">
+                <h2 class="font-display text-5xl md:text-6xl text-brand-dark font-bold relative z-10 bg-brand-cream inline-block px-10 py-4 rounded-full border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] transform rotate-1">
+                    El Diario de Albi 🐾
+                </h2>
+             </div>
+
+             <!-- Grid de Entradas de Blog -->
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                 
+                 <!-- Article 1 -->
+                 <article class="bg-white rounded-[2rem] p-6 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-3 hover:shadow-[12px_12px_0px_#5A181D] transition-all duration-300 flex flex-col cursor-pointer group">
+                     <div class="h-48 bg-brand-lightpink rounded-2xl mb-6 border-4 border-brand-dark flex items-center justify-center text-7xl group-hover:scale-105 transition-transform">🧁</div>
+                     <h3 class="font-display text-2xl font-bold text-brand-hotpink mb-4 leading-tight">El secreto de nuestro doble frosting: Cremoso y suave</h3>
+                     <p class="font-body text-brand-dark font-semibold text-lg mb-6 flex-grow">Descubre por qué nuestro queso crema es tan especial y cómo logramos esa textura que se derrite en tu boca.</p>
+                     <div class="font-display font-bold text-brand-orange group-hover:text-brand-hotpink flex items-center gap-2 text-xl">Leer más <span class="group-hover:translate-x-2 transition-transform">→</span></div>
+                 </article>
+                 
+                 <!-- Article 2 -->
+                 <article class="bg-white rounded-[2rem] p-6 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-3 hover:shadow-[12px_12px_0px_#5A181D] transition-all duration-300 flex flex-col transform md:-translate-y-8 cursor-pointer group">
+                     <div class="h-48 bg-brand-orange rounded-2xl mb-6 border-4 border-brand-dark flex items-center justify-center text-7xl group-hover:scale-105 transition-transform">🔥</div>
+                     <h3 class="font-display text-2xl font-bold text-brand-hotpink mb-4 leading-tight">Guía de calentado: Cómo hacer que tu rol sepa a recién salido del horno</h3>
+                     <p class="font-body text-brand-dark font-semibold text-lg mb-6 flex-grow">¿Los guardaste para después? Te enseñamos el truco de microondas vs horno para revivir la magia.</p>
+                     <div class="font-display font-bold text-brand-orange group-hover:text-brand-hotpink flex items-center gap-2 text-xl">Leer más <span class="group-hover:translate-x-2 transition-transform">→</span></div>
+                 </article>
+                 
+                 <!-- Article 3 -->
+                 <article class="bg-white rounded-[2rem] p-6 border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] hover:-translate-y-3 hover:shadow-[12px_12px_0px_#5A181D] transition-all duration-300 flex flex-col cursor-pointer group">
+                     <div class="h-48 bg-[#D93847] rounded-2xl mb-6 border-4 border-brand-dark flex items-center justify-center text-7xl group-hover:scale-105 transition-transform">🥤</div>
+                     <h3 class="font-display text-2xl font-bold text-brand-hotpink mb-4 leading-tight">Top 3 bebidas locales para acompañar tu rol de frutos rojos</h3>
+                     <p class="font-body text-brand-dark font-semibold text-lg mb-6 flex-grow">Desde un buen café de olla hasta opciones frías. El maridaje perfecto directo en Villahermosa.</p>
+                     <div class="font-display font-bold text-brand-orange group-hover:text-brand-hotpink flex items-center gap-2 text-xl">Leer más <span class="group-hover:translate-x-2 transition-transform">→</span></div>
+                 </article>
+             </div>
+         </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-brand-hotpink pt-16 pb-12 overflow-hidden relative">
+        <div class="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+            
+            <!-- Mensaje de agradecimiento Neo-Brutalista -->
+            <div class="bg-brand-cream text-brand-dark font-display font-bold text-3xl md:text-5xl py-6 px-10 rounded-[2rem] border-4 border-brand-dark shadow-[8px_8px_0px_#5A181D] transform -rotate-2 mb-12 hover:rotate-0 transition-transform cursor-pointer">
+                Gracias por tu compra ❤️
+            </div>
+
+            <!-- Redes Sociales y Contacto -->
+            <div class="flex flex-col items-center gap-6">
+                <a href="#" class="flex items-center gap-3 bg-brand-lightpink text-brand-dark font-display font-bold text-2xl py-3 px-8 rounded-full border-4 border-brand-dark shadow-[4px_4px_0px_#5A181D] hover:-translate-y-1 hover:shadow-[6px_6px_0px_#5A181D] transition-all">
+                    <!-- Instagram Icon SVG -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                    </svg>
+                    @querollovhsa
+                </a>
+            </div>
+            
+            <p class="mt-12 font-body text-brand-cream font-bold text-lg tracking-wide bg-brand-dark/20 px-6 py-2 rounded-full">
+                © 2024 Qué Rollo - Roles de Canela & Más
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
